@@ -9,4 +9,7 @@ print(nombre)
 print(type(nombre))
 
 texto = "Buenas noches con todos Brian OConner"
-texto = 
+texto = "Buenas NOches"
+
+otro_texto = "y Eduardo dijo : \"Hola AMigo\""
+print(otro_texto)
