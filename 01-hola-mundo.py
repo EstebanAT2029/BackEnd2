@@ -13,3 +13,11 @@ texto = "Buenas NOches"
 
 otro_texto = "y Eduardo dijo : \"Hola AMigo\""
 print(otro_texto)
+#Triple comillas simple o comilla doble para salto de linea
+parrafo = """Yo me llamo Esteban
+y tengo una experiencia"""
+print(parrafo)
+
+#Declarar varias variables en una misma linea
+curso, mes, dia, habilitado, nota = "BackEnd", "Marzo", 20, False, 13
+print(curso)
