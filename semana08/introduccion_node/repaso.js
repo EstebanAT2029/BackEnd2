@@ -1,3 +1,5 @@
+// winget install jasongin.nvs
+//para usar npm =>nvs use node/22.15.1/x64
 const nombre = 'Esteban'
 let edad = 32
 edad = 31
