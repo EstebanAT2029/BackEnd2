@@ -1,0 +1,26 @@
+{
+  "name": "3_node_con_prisma",
+  "version": "1.0.0",
+  "description": "Proyecto de node utilizando un ORM llamado prisma",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "expres",
+    "prisma"
+  ],
+  "author": "Esteban Apaza T",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.8.2"
+  }
+}
