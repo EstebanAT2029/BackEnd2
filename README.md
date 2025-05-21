@@ -6,3 +6,6 @@ Para ir a la Pagina Oficial de Codigo has click [aqui](https://codigo.edu.pe/)
 
 Autor: Esteban Apaza Ticona
 #### Empezando con el BankEnd
+
+### Guia Instalacion Express
+> npm init
