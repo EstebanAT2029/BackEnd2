@@ -1,6 +1,7 @@
 import express from "express";
 import { productoRouter } from "./routers/productos_router.js";
 import { clienteRouter } from "./routers/clientes_router.js";
+import { usuarioRouter } from "./routers/usuarios_router.js";
 
 const servidor = express();
 
@@ -12,6 +13,7 @@ servidor.use(express.json());
 // Aca dejamos las rutas declaradas en nuestros routes
 servidor.use(productoRouter);
 servidor.use(clienteRouter);
+servidor.use(usuarioRouter);
 
 servidor.listen(PORT, (error) => {
   if (error) {
