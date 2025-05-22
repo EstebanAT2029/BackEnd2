@@ -69,6 +69,24 @@ model DetalleOperacion {
   @@map("detalle_operaciones")
 }
 
+model Usuario{
+  id          Int           @id @default(autoincrement())
+  nombre      String
+  correo      String
+  password    String
+  tipoUsuario TipoUsuario   @map("tipo_usuario")
+
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("usuarios")
+}
+
+enum TipoUsuario {
+  ADMIN
+  CAJERO
+}
+
 enum TipoDocumento {
   DNI
   CE

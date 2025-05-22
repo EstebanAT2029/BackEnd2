@@ -1,0 +1,5 @@
+npx prisma init             > inicializa el proyecto con prisma creando la carpeta prisma
+npx prisma generate         > genera el cliente de prisma definido en la linea 10 del shema, 
+                              si no se definio, usaremos los node_modules para ahi nuestro cliente
+npx prisma migrate dev      > crea una nueva migracion
+npx prisma migrate deploy   > ejecutas las migraciones pendientes
