@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-import { devolverArchivo, subirArchivo } from "../controllers/archivos_controller.js";
+import { devolverArchivo, eliminarArchivo, generarUrlDelBacket, subirArchivo, } from "../controllers/archivos_controller.js";
 
 const middlewareArchivos = multer({
     storage: multer.memoryStorage(), 
@@ -22,3 +22,7 @@ archivosRouter.post("/subir-archivo", middlewareArchivos.single("archivo"), subi
 );
 
 archivosRouter.get("/devolver-archivo", devolverArchivo);
+
+archivosRouter.post("/generar-url", generarUrlDelBacket);
+
+archivosRouter.delete("/archivo/:id", eliminarArchivo);

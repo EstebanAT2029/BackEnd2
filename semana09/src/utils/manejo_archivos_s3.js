@@ -1,12 +1,13 @@
-import AWS, { GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand, } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { array } from "zod";
 
-const s3 = new AWS.S3Client({
-    region: process.env.BUCKET_REGION,
-    credentials: {
-        accessKeyId: process.env.BUCKET_ACCESS_KEY,
-        secretAccessKey: process.env.BUCKET_SECRET_ACCESS_KEY,
-    } ,
+const s3 = new S3Client({
+  region: process.env.BUCKET_REGION,
+  credentials: {
+    accessKeyId: process.env.BUCKET_ACCESS_KEY,
+    secretAccessKey: process.env.BUCKET_SECRET_ACCESS_KEY,
+  },
 });
 
 export const subirArchivoAlBucket = async ({
@@ -18,7 +19,7 @@ export const subirArchivoAlBucket = async ({
 } = data
 
 ) => {
-    const comand = new AWS.PutObjectCommand({
+    const comand = new PutObjectCommand({
         Bucket: process.env.BUCKET_NAME,
         Key: `${carpeta}/${nombre}`,
         Body: archivo,
@@ -42,4 +43,37 @@ export const devolverArchivoDelBucket = async ({carpeta, archivo} = data) => {
 
     const url = await getSignedUrl(s3, comando, { expiresIn: 30});
     return url;
+};
+
+export const devolverURLDeSubidaDelBucket = async ({
+    carpeta,
+    archivo, 
+    mimetype,
+} = data) => {
+    console.log(carpeta);
+    console.log(archivo);
+    const comand = new PutObjectCommand({
+        Bucket: process.env.BUCKET_NAME,
+        Key: `${carpeta}/${archivo}`,
+        ContentType: mimetype,
+    });
+
+    try {
+        const url = await getSignedUrl(s3, comand, { expiresIn: 60 });
+        return url;
+    } catch (error) {
+        console.log("Error al generar la url para subir el archivo");
+        throw error;
+    }
+};
+
+export const eliminarArchivoDelBucket = async ({carpeta, archivo }) => {
+    console.log(process.env.BUCKET_NAME)
+    console.log(`${carpeta}/${archivo}`)
+    const comand = new DeleteObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: `${carpeta}/${archivo}`,
+  });
+
+  await s3.send(comand);
 }
